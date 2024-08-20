@@ -2,16 +2,30 @@
   "name": "fluent-api-client",
   "license": "MIT",
   "scripts": {
-    "run": "node dist/index.js",
-    "clean": "del /s /q dist",
-    "build": "npm run clean && tsc --project config/typescript/tsconfig.release.json",
-    "copy-files": "copy config\\package.release.json dist\\package.json && copy *.md dist",
-    "build:dev": "npm run clean && tsc --project config/typescript/tsconfig.dev.json",
-    "prepublishOnly": "npm run build && npm run copy-files",
-    "verify": "npm run prepublishOnly && cd dist && npm pack --dry-run",
-    "publish": "cd dist && npm publish"
+    "dev": "rollup -c --watch --environment NODE_ENV:development",
+    "run": "node dist/fluent-api-client.min.js",
+    "build:prod": "rollup -c --environment NODE_ENV:production",
+    "build:prod:esm": "rollup -c --environment NODE_ENV:production,ROLLUP_OUTPUT_FORMAT:esm",
+    "build:dev": "rollup -c --environment NODE_ENV:development,ROLLUP_OUTPUT_FORMAT:esm",
+    "build:dev:all": "rollup -c --environment NODE_ENV:development,ROLLUP_OUTPUT_FORMAT:all",
+    "npm:verify": "npm run build:prod && cd dist && npm pack --dry-run",
+    "npm:publish": "cd dist && npm publish"
   },
   "devDependencies": {
+    "@kineticcafe/rollup-plugin-delete": "^3.0.0",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-run": "^3.1.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "dotenv": "^16.4.5",
+    "rollup": "^4.21.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-node-externals": "^7.1.3",
+    "source-map-support": "^0.5.21",
+    "tslib": "^2.6.3",
     "typescript": "^5.5.4"
   }
 }

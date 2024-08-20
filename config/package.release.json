@@ -1,11 +1,21 @@
 {
   "name": "fluent-api-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A TypeScript package for creating strongly typed, fluent API clients",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "cjs/fluent-api-client.min.cjs",
+  "module": "esm/fluent-api-client.min.mjs",
+  "browser": "umd/fluent-api-client.min.js",
+  "types": "fluent-api-client.d.ts",
+  "exports": {
+    "import": "./esm/fluent-api-client.min.mjs",
+    "require": "./cjs/fluent-api-client.min.cjs",
+    "browser": "./umd/fluent-api-client.min.js",
+    "types": "./fluent-api-client.d.ts"
+  },
   "files": [
-    "*.js",
+    "esm",
+    "cjs",
+    "umd",
     "*.d.ts"
   ],
   "scripts": {
