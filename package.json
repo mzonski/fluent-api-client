@@ -1,0 +1,16 @@
+{
+  "name": "fluent-api-client",
+  "license": "MIT",
+  "scripts": {
+    "run": "node dist/index.js",
+    "clean": "del /s /q dist",
+    "build": "npm run clean && tsc --project config/typescript/tsconfig.release.json",
+    "build:dev": "npm run clean && tsc --project config/typescript/tsconfig.dev.json",
+    "prepublishOnly": "npm run build && copy config\\package.release.json dist\\package.json",
+    "verify": "npm run prepublishOnly && cd dist && npm pack --dry-run",
+    "publish": "cd dist && npm publish"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

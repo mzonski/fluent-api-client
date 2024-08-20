@@ -1,0 +1,28 @@
+{
+  "name": "fluent-api-client",
+  "version": "0.0.1",
+  "description": "A TypeScript package for creating strongly typed, fluent API clients",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "*.js",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "run": "node index.js"
+  },
+  "repository": "https://github.com/mzonski/fluent-api-client.git",
+  "homepage": "https://github.com/mzonski/fluent-api-client#readme",
+  "bugs": {
+    "url": "https://github.com/mzonski/fluent-api-client/issues",
+    "email": "msn@zonni.pl"
+  },
+  "author": "Maciej Zonski <msn@zonni.pl> (https://zonni.pl)",
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "client",
+    "typescript",
+    "fluent"
+  ]
+}
