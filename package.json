@@ -5,8 +5,9 @@
     "run": "node dist/index.js",
     "clean": "del /s /q dist",
     "build": "npm run clean && tsc --project config/typescript/tsconfig.release.json",
+    "copy-files": "copy config\\package.release.json dist\\package.json && copy *.md dist",
     "build:dev": "npm run clean && tsc --project config/typescript/tsconfig.dev.json",
-    "prepublishOnly": "npm run build && copy config\\package.release.json dist\\package.json",
+    "prepublishOnly": "npm run build && npm run copy-files",
     "verify": "npm run prepublishOnly && cd dist && npm pack --dry-run",
     "publish": "cd dist && npm publish"
   },

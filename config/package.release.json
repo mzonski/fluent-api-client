@@ -1,6 +1,6 @@
 {
   "name": "fluent-api-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A TypeScript package for creating strongly typed, fluent API clients",
   "main": "index.js",
   "types": "index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "run": "node index.js"
   },
-  "repository": "https://github.com/mzonski/fluent-api-client.git",
+  "repository": "git+https://github.com/mzonski/fluent-api-client.git",
   "homepage": "https://github.com/mzonski/fluent-api-client#readme",
   "bugs": {
     "url": "https://github.com/mzonski/fluent-api-client/issues",
