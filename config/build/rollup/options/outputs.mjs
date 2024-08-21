@@ -1,7 +1,7 @@
 // @ts-check
 /**
- * @param {'cjs' | 'esm' | 'umd'} format
- * @returns {'.cjs' | '.mjs' | '.js'}
+ * @param {'cjs' | 'esm' | 'umd' | 'system' } format
+ * @returns {'.cjs' | '.mjs' | '.js' | '.system.js'}
  */
 const getExtension = (format) => {
 	switch (format) {
@@ -9,16 +9,17 @@ const getExtension = (format) => {
 			return '.cjs';
 		case 'esm':
 			return '.mjs';
-		case 'umd':
 		case 'system':
+			return '.system.js';
+		case 'umd':
 		default:
 			return '.js';
 	}
 };
 
 /**
- * @param {'cjs' | 'esm' | 'umd'} format
- * @param {ReturnType<typeof import('../utils/environment.mjs').getEnvironment>} env
+ * @param {'cjs' | 'esm' | 'umd' | 'system'} format
+ * @param {ReturnType<typeof import('../../utils/environment.mjs').getEnvironment>} env
  * @param {boolean} buildAll
  * @returns {import('rollup').OutputOptions}
  */
@@ -43,11 +44,11 @@ export function generateOutputOptions(format, env, buildAll) {
 
 /**
  * @param {import('rollup').RollupOptions} baseConfig
- * @param {ReturnType<typeof import('../utils/environment.mjs').getEnvironment>} env
+ * @param {ReturnType<typeof import('../../utils/environment.mjs').getEnvironment>} env
  * @returns {import('rollup').RollupOptions[]}
  */
 export function createOutputOptions(baseConfig, env) {
-	/** @type {('cjs' | 'esm' | 'umd')[]} */
+	/** @type {('cjs' | 'esm' | 'umd' | 'system')[]} */
 	const formats = ['cjs', 'esm', 'umd'];
 
 	if (env.buildType !== 'all') {

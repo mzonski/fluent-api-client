@@ -1,16 +1,23 @@
 // @ts-check
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+import chalk from 'chalk';
+
 /** @typedef {'cjs' | 'esm' | 'umd' | 'all'} BuildType */
 
 function printEnvironmentVariables() {
-	console.log('[process.env] ROLLUP_INCLUDE_DEPS = ', process.env.ROLLUP_INCLUDE_DEPS);
-	console.log('[process.env] ROLLUP_OUTPUT_FORMAT = ', process.env.ROLLUP_OUTPUT_FORMAT);
-	console.log('[process.env] ROLLUP_TS_CONFIG_PATH = ', process.env.ROLLUP_TS_CONFIG_PATH);
-	console.log('[process.env] ROLLUP_TS_TEMP_DIR = ', process.env.ROLLUP_TS_TEMP_DIR);
-	console.log('[process.env] ROLLUP_OUTPUT_DIR = ', process.env.ROLLUP_OUTPUT_DIR);
-	console.log('[process.env] ROLLUP_OUTPUT_FILENAME = ', process.env.ROLLUP_OUTPUT_FILENAME);
-	console.log('[process.env] NODE_ENV = ', process.env.NODE_ENV);
-	console.log('[process.env] ROLLUP_WATCH = ', process.env.ROLLUP_WATCH);
-	console.log('[process.env] ROLLUP_WATCH = ', process.env.ROLLUP_DEBUG);
+	console.log(chalk.cyan.bold('🔧 ROLLUP Environment Variables:'));
+	console.log(chalk.dim('━'.repeat(40)));
+
+	Object.keys(process.env).forEach((key) => {
+		if (key.startsWith('ROLLUP_')) {
+			console.log(`${chalk.green(key)}: ${chalk.yellow(process.env[key])}`);
+		}
+	});
+
+	console.log(chalk.dim('━'.repeat(40)));
+	console.log(chalk.gray.italic('🏁 End of ROLLUP variables'));
 }
 
 /**
@@ -47,4 +54,10 @@ export function getEnvironment(baseDir, debug = Boolean(process.env.ROLLUP_DEBUG
 		baseDir: baseDir ?? process.cwd(),
 		debug,
 	};
+}
+
+export function getProjectRoot() {
+	const __filename = fileURLToPath(import.meta.url);
+	const __dirname = dirname(__filename);
+	return resolve(__dirname);
 }

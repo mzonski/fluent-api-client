@@ -15,7 +15,7 @@ export function cleanupBeforeBuild(outDir) {
 }
 
 /**
- * @param {ReturnType<typeof import('../utils/environment.mjs').getEnvironment>} env
+ * @param {ReturnType<typeof import('../../utils/environment.mjs').getEnvironment>} env
  * @returns {import('rollup').Plugin}
  */
 export function cleanupAfterBuild(env) {

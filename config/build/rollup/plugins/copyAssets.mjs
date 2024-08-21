@@ -2,7 +2,7 @@
 import copy from 'rollup-plugin-copy';
 
 /**
- * @param {ReturnType<typeof import('../utils/environment.mjs').getEnvironment>} env
+ * @param {ReturnType<typeof import('../../utils/environment.mjs').getEnvironment>} env
  * @returns {import('rollup').Plugin}
  */
 export function copyAssets(env) {

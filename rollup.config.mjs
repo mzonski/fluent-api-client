@@ -1,19 +1,18 @@
 // @ts-check
 import { defineConfig } from 'rollup';
 
-import { createBaseOptions } from './config/build/options/base.mjs';
-import { createDtsOptions } from './config/build/options/dts.mjs';
-import { createOutputOptions } from './config/build/options/outputs.mjs';
+import { createBaseOptions } from './config/build/rollup/options/base.mjs';
+import { createDtsOptions } from './config/build/rollup/options/dts.mjs';
+import { createOutputOptions } from './config/build/rollup/options/outputs.mjs';
 import { getEnvironment } from './config/build/utils/environment.mjs';
 import { injectEnvFiles } from './config/build/utils/injectEnvFiles.mjs';
 import path from 'path';
 
-const baseDir = process.cwd();
-
-const debug = process.env.ROLLUP_DEBUG ?? false;
+const debug = Boolean(process.env.ROLLUP_DEBUG) ?? false;
+const baseDir = process.cwd()
 
 injectEnvFiles({
-	directory: path.join(baseDir, 'config/environments'),
+	directory: path.join(process.cwd(), 'config/environments'),
 	debug,
 });
 const currentEnv = getEnvironment(baseDir, debug);

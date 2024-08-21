@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import chalk from 'chalk';
 import dotenv from 'dotenv';
 
 /**
@@ -17,14 +18,21 @@ import dotenv from 'dotenv';
 
 /**
  * @param {InjectEnvOptions} options
- * @returns {EnvObject}
  */
 export function injectEnvFiles(options) {
 	/** @type {InjectEnvOptions} */
 	const { directory = process.cwd(), debug = false } = options;
 
+	if (process.env.DOTENV_INJECTED) {
+		debugLog('Environment variables already injected, skipping');
+	}
+
 	if (!['development', 'test', 'production'].includes(process.env.NODE_ENV || '')) {
-		console.warn(`NODE_ENV "${process.env.NODE_ENV}" is not recognized. Defaulting to "production".`);
+		console.warn(
+			chalk.yellow(
+				`NODE_ENV "${chalk.bold(process.env.NODE_ENV)}" is not recognized. Defaulting to "${chalk.bold('production')}".`,
+			),
+		);
 	}
 
 	/** @type {boolean} */
@@ -53,22 +61,22 @@ export function injectEnvFiles(options) {
 	}
 
 	/**
-	 * @param {string} filePath - The path to the env file
-	 * @returns {EnvObject} The parsed env file contents
+	 * @param {string} filePath
+	 * @returns {EnvObject}
 	 */
 	function parseEnvFile(filePath) {
 		try {
 			/** @type {EnvObject} */
 			const envConfig = dotenv.parse(fs.readFileSync(filePath, { encoding: 'utf8' }));
-			debugLog(`Loaded ${filePath}`);
+			debugLog(chalk.green(`Loaded ${filePath}`));
 			return envConfig;
 		} catch (error) {
 			if (error && typeof error === 'object' && 'code' in error && 'message' in error) {
 				if (error.code !== 'ENOENT') {
-					console.error(`Error reading ${filePath}:`, error.message);
+					console.error(chalk.red(`Error reading ${filePath}:`), chalk.redBright(error.message));
 				}
 			} else {
-				console.error(`An unexpected error occurred while reading ${filePath}`);
+				console.error(chalk.red(`An unexpected error occurred while reading ${filePath}`));
 			}
 
 			return {};
@@ -76,8 +84,8 @@ export function injectEnvFiles(options) {
 	}
 
 	/**
-	 * @param {EnvObject} env - The env object to expand
-	 * @returns {EnvObject} The expanded env object
+	 * @param {EnvObject} env
+	 * @returns {EnvObject}
 	 */
 	function expandVariables(env) {
 		/** @type {EnvObject} */
@@ -96,8 +104,11 @@ export function injectEnvFiles(options) {
 
 	const expandedEnv = expandVariables(loadedEnv);
 
+	Object.assign(expandedEnv, { DOTENV_INJECTED: true });
 	Object.assign(process.env, expandedEnv);
 
-	debugLog(`Environment variables loaded successfully (NODE_ENV: ${NODE_ENV}, CI: ${isCI})`);
-	return expandedEnv;
+	debugLog(
+		chalk.green(`Environment variables loaded successfully`) +
+			chalk.magenta(`(NODE_ENV: ${chalk.bold(NODE_ENV)}, CI: ${chalk.bold(String(isCI))})`),
+	);
 }

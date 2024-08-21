@@ -11,7 +11,7 @@ import typescriptEngine from 'typescript';
 import { cleanupBeforeBuild } from '../plugins/cleanup.mjs';
 
 /**
- * @param {ReturnType<typeof import('../utils/environment.mjs').getEnvironment>} env
+ * @param {ReturnType<typeof import('../../utils/environment.mjs').getEnvironment>} env
  * @returns {import('rollup').RollupOptions}
  */
 export function createBaseOptions(env) {
