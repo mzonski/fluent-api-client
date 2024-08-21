@@ -1,20 +1,30 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
-	},
-	"include": [
-		"../../src/**/*.ts",
-		"../../src/**/*.js",
-		"../../config/options/**/*.mjs",
-		"../../*.mjs",
-		"../../*.ts",
-		"../../*.cjs",
-		"../../.eslintrc.cjs",
-		"../../.prettierrc.mjs",
-		"../../rollup.config.mjs",
-		"../../package.json",
-		"../../tsconfig.json"
-	]
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "rootDir": "../..",
+    "types": [
+      "vitest/globals",
+      "node"
+    ]
+  },
+  "include": [
+    // Source
+    "../../src",
+    // Project
+    "../build",
+    "../../*.mjs",
+    "../../*.ts",
+    "../../*.cjs",
+    // Tests
+    "../setupTests.ts",
+    "../../**/__tests__/*"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
 }

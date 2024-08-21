@@ -1,10 +1,25 @@
 {
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"moduleResolution": "Bundler",
+    "module": "es6",
+    "moduleResolution": "Bundler",
 		"declaration": true,
 		"sourceMap": false,
 		"outDir": "../../dist",
 		"noEmit": false
-	}
+	},
+  "exclude": [
+    // Ignored dir
+    "../../_ignored",
+
+    // Project
+    "../build",
+    "../../*.mjs",
+    "../../*.ts",
+    "../../*.cjs",
+
+    // TESTS
+    "../setupTests.ts",
+    "../../**/__tests__/*"
+  ]
 }
