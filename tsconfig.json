@@ -1,9 +1,3 @@
 {
-	"extends": "./config/typescript/tsconfig.base.json",
-	"compilerOptions": {
-		"removeComments": false,
-		"sourceMap": true,
-		"outDir": "./dist",
-		"noEmit": true
-	}
+  "extends": "./config/typescript/tsconfig.eslint.json",
 }

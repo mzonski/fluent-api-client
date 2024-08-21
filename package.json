@@ -35,6 +35,7 @@
 		"source-map-support": "^0",
 		"tslib": "^2",
 		"typescript": "^5",
+		"vitest": "^2",
 		"zonia-config-prettier": "^1"
 	},
 	"prettier": "zonia-config-prettier"
