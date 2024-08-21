@@ -1,38 +1,28 @@
 {
-  "name": "fluent-api-client",
-  "version": "0.0.3",
-  "description": "A TypeScript package for creating strongly typed, fluent API clients",
-  "main": "cjs/fluent-api-client.min.cjs",
-  "module": "esm/fluent-api-client.min.mjs",
-  "browser": "umd/fluent-api-client.min.js",
-  "types": "fluent-api-client.d.ts",
-  "exports": {
-    "import": "./esm/fluent-api-client.min.mjs",
-    "require": "./cjs/fluent-api-client.min.cjs",
-    "browser": "./umd/fluent-api-client.min.js",
-    "types": "./fluent-api-client.d.ts"
-  },
-  "files": [
-    "esm",
-    "cjs",
-    "umd",
-    "*.d.ts"
-  ],
-  "scripts": {
-    "run": "node index.js"
-  },
-  "repository": "git+https://github.com/mzonski/fluent-api-client.git",
-  "homepage": "https://github.com/mzonski/fluent-api-client#readme",
-  "bugs": {
-    "url": "https://github.com/mzonski/fluent-api-client/issues",
-    "email": "msn@zonni.pl"
-  },
-  "author": "Maciej Zonski <msn@zonni.pl> (https://zonni.pl)",
-  "license": "MIT",
-  "keywords": [
-    "api",
-    "client",
-    "typescript",
-    "fluent"
-  ]
+	"name": "fluent-api-client",
+	"version": "0.0.3",
+	"description": "A TypeScript package for creating strongly typed, fluent API clients",
+	"main": "cjs/fluent-api-client.min.cjs",
+	"module": "esm/fluent-api-client.min.mjs",
+	"browser": "umd/fluent-api-client.min.js",
+	"types": "fluent-api-client.d.ts",
+	"exports": {
+		"import": "./esm/fluent-api-client.min.mjs",
+		"require": "./cjs/fluent-api-client.min.cjs",
+		"browser": "./umd/fluent-api-client.min.js",
+		"types": "./fluent-api-client.d.ts"
+	},
+	"files": ["esm", "cjs", "umd", "*.d.ts"],
+	"scripts": {
+		"run": "node index.js"
+	},
+	"repository": "git+https://github.com/mzonski/fluent-api-client.git",
+	"homepage": "https://github.com/mzonski/fluent-api-client#readme",
+	"bugs": {
+		"url": "https://github.com/mzonski/fluent-api-client/issues",
+		"email": "msn@zonni.pl"
+	},
+	"author": "Maciej Zonski <msn@zonni.pl> (https://zonni.pl)",
+	"license": "MIT",
+	"keywords": ["api", "client", "typescript", "fluent"]
 }

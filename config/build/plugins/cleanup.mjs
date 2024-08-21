@@ -1,4 +1,5 @@
 // @ts-check
+// eslint-disable-next-line import/no-unresolved
 import { del } from '@kineticcafe/rollup-plugin-delete';
 
 /**
@@ -6,11 +7,11 @@ import { del } from '@kineticcafe/rollup-plugin-delete';
  * @returns {import('rollup').Plugin}
  */
 export function cleanupBeforeBuild(outDir) {
-  return del({
-    targets: outDir,
-    runOnce: true,
-    hook: 'buildStart',
-  });
+	return del({
+		targets: outDir,
+		runOnce: true,
+		hook: 'buildStart',
+	});
 }
 
 /**
@@ -18,8 +19,8 @@ export function cleanupBeforeBuild(outDir) {
  * @returns {import('rollup').Plugin}
  */
 export function cleanupAfterBuild(env) {
-  return del({
-    targets: `${env.outDir}/${env.tsTypesTempDir}`,
-    hook: 'writeBundle',
-  });
+	return del({
+		targets: `${env.outDir}/${env.tsTypesTempDir}`,
+		hook: 'writeBundle',
+	});
 }

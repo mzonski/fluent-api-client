@@ -1,6 +1,5 @@
-type Payload = string
+type Payload = string;
 
 export function helloWorld(message: Payload) {
-  console.log(message)
+  console.log(message);
 }
-

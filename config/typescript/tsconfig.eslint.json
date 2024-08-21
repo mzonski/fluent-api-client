@@ -1,0 +1,20 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true
+	},
+	"include": [
+		"../../src/**/*.ts",
+		"../../src/**/*.js",
+		"../../config/options/**/*.mjs",
+		"../../*.mjs",
+		"../../*.ts",
+		"../../*.cjs",
+		"../../.eslintrc.cjs",
+		"../../.prettierrc.mjs",
+		"../../rollup.config.mjs",
+		"../../package.json",
+		"../../tsconfig.json"
+	]
+}
