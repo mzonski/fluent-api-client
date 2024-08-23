@@ -1,5 +1,3 @@
-import { helloWorld } from './module';
+import defineEndpoint from './defineEndpoint';
 
-helloWorld('Hello world, this is my initial package of fluent-api-client');
-
-export { helloWorld };
+export default { defineEndpoint };

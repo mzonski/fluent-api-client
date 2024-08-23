@@ -65,13 +65,16 @@ const configOverride = {
 			},
 		},
 		{
-			files: ['**/__tests__/*.{j,t}s?(x)'],
+			files: ['./**/__tests__/**/*.{j,t}s?(x)'],
 			env: {
 				'vitest-globals/env': true,
 			},
 			extends: ['plugin:vitest-globals/recommended'],
 			rules: {
 				...nodeRules,
+				'@typescript-eslint/no-explicit-any': 'off',
+				'@typescript-eslint/ban-types': 'off',
+				'@typescript-eslint/ban-ts-comment': 'off',
 			},
 		},
 	],

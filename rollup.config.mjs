@@ -9,7 +9,7 @@ import { injectEnvFiles } from './config/build/utils/injectEnvFiles.mjs';
 import path from 'path';
 
 const debug = Boolean(process.env.ROLLUP_DEBUG) ?? false;
-const baseDir = process.cwd()
+const baseDir = process.cwd();
 
 injectEnvFiles({
 	directory: path.join(process.cwd(), 'config/environments'),

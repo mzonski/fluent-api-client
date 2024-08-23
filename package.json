@@ -4,21 +4,25 @@
 	"scripts": {
 		"dev": "rollup -c --watch --environment NODE_ENV:development",
 		"run": "node dist/fluent-api-client.min.js",
+		"----": "echo ROLLUP",
 		"build:prod": "rollup -c --environment NODE_ENV:production",
 		"build:prod:esm": "rollup -c --environment NODE_ENV:production,ROLLUP_OUTPUT_FORMAT:esm",
 		"build:dev": "rollup -c --environment NODE_ENV:development,ROLLUP_OUTPUT_FORMAT:esm",
 		"build:dev:all": "rollup -c --environment NODE_ENV:development,ROLLUP_OUTPUT_FORMAT:all",
 		"npm:verify": "npm run build:prod && cd dist && npm pack --dry-run",
 		"npm:publish": "cd dist && npm publish",
-		"--------": "echo FORMATING",
+		"-----": "echo FORMATING",
 		"format:write": "prettier --write \"**/*.{json,md}\" \".eslintrc.cjs\" \"*.config.{cjs,mjs}\"",
 		"lint": "eslint  --report-unused-disable-directives --max-warnings 0 src config",
 		"lint:fix": "npm run lint -- --fix",
-		"-------": "echo GULP",
+		"------": "echo GULP",
 		"gulp": "gulp --gulpfile ./config/build/gulp/.gulpfile.mjs",
 		"gulp:build:prod": "npm run gulp -- build",
 		"gulp:build:dev": "npm run gulp -- build --dev",
-		"gulp:publish": "npm run gulp -- build-and-publish"
+		"gulp:publish": "npm run gulp -- build-and-publish",
+		"-------": "echo TESTS",
+		"test": "vitest",
+		"test:types": "vitest --typecheck"
 	},
 	"devDependencies": {
 		"@kineticcafe/rollup-plugin-delete": "^3",
